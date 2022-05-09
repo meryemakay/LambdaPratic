@@ -21,6 +21,11 @@ public class C1_IntList_StreamOrnekleri {
         System.out.println("kupler"+ kuplerList(list));
         System.out.println("son basamagı 5 olmayan" + sonBasamagıbesOLMAYANKARELERList(list));
         System.out.println("eleman toplamı:" +elemnToplam(list));
+        System.out.println("negatflrın karesı :" + negatıflerınKrelerı(list));
+        System.out.println("besten buyk sayılar Var mı :"+bestenBuyukVarMı(list));
+        System.out.println("sıfırdan kucukMU: " +sıfırdanKuuckMu(list));
+
+
     }
     // S1:listi aralarinda bosluk birakarak yazdiriniz //
 public static void hepsiniYaz( List<Integer> l ){
@@ -102,29 +107,45 @@ public static int elemnToplam(List<Integer> l ) {
 }
     // S11 : peek ornegi cozelim - negatiflerin karelerinden list olusturalim
 
+    public static List<Integer> negatıflerınKrelerı( List<Integer> l ) {
+        System.out.println();
+        return  l.stream().filter(t->t<0).
+                peek(t-> System.out.println("negatıfler :" + t)).//ara ıslem negatıflerın hepsını aldı mı
+                map(t->t*t).
+                peek(t-> System.out.println("karelerı :" +t)).//denetlemek ıstedıgımz methoddn once koyuyoruz
+                collect(Collectors.toList());//yenı lıst olsuturmk ıcın kullnılır
 
+    }
 
     // S12 : listeden 5 den buyuk  sayi var mi?
+public static boolean bestenBuyukVarMı( List<Integer> l ){
+        return l.stream().anyMatch(t->t>5); //1 tane eslesme varsa true doner
+}
 
 
 
     // S13 : listenin tum elemanlari sifirdan kucuk mu?
 
-
+    public static boolean sıfırdanKuuckMu( List<Integer> l ){
+        return l.stream().allMatch(t->t<0);//allmatch tum elemnlar sartı saglarsa true doner. bır tane de farklı olsa false olur
+    }
 
     // S14: listenin 100 e esit elemani yok mu ?
+    public static boolean yuzeEsıtEleman( List<Integer> l ){
+        return l.stream().noneMatch(t->t<0);//allmatch tum elemnlar sartı saglarsa true doner. bır tane de farklı olsa false olur
+    }
 
-
+//nommatch
 
     // S15: listenin sifira esit elemani yok mu?
 
-
+//
 
     // S16:  listenin ilk 5 elemanini topla?
 
-
+//lımıt
 
     //S17: listenin son bes elemaninin  listele
 
-
+//System.out.println(list.stream().skip(list.size()-5).collect(Collectors.toList()));
 }
