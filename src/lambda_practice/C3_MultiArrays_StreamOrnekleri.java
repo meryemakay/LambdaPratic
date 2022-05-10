@@ -21,7 +21,7 @@ public class C3_MultiArrays_StreamOrnekleri {
         System.out.print("e ıle baslaynlar : ");
         doubleYaz(arr);
         System.out.println("eıleBaslayanYazListe(arr) = " + eıleBaslayanYazListe(arr));
-        kıleBıtenlereyıldız(arr);
+        System.out.print("k ıle bıtenlere yıldız :"); kBitenlereYildiz(arr);
 
     }
     // S1 : tum elemanlari list yapalim
@@ -55,13 +55,10 @@ public static List<String>list(String[][] str){
 
 
     //S4 : k ile bitenlerin sonuna '*' ekleyelim
-public static void kıleBıtenlereyıldız(String [][] arr){
-
-        Arrays.stream(arr).
-                flatMap(t->Arrays.stream(t)).
-                filter(t->t.toLowerCase().startsWith("k")).
-                map(t->t+"*").
-                forEach(t->System.out.println(t + " "));
-}
-
+    public static void kBitenlereYildiz(String [][] arr){
+        System.out.println();
+        Arrays.stream(arr).flatMap(t-> Arrays.stream(t)).
+                filter(t-> t.endsWith("k")).map(t-> t+ "*").
+                forEach(t-> System.out.print(t + " "));
+    }
 }
