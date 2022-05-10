@@ -20,8 +20,12 @@ public class C6_Lambdada_ForLoop_Aralik_Kontrolu {
         System.out.println("Teksayıcarp(7,15) = " + Teksayıcarp(7, 15));
         System.out.println("**\n");
         ılk10Yaz(10);
+        System.out.println("**\n");
 
+        yedınınKatlar(21);
+        System.out.println("**\n");
 
+        System.out.println("yedınınKatlarTop(20) = " + yedınınKatlarTop(20));
 
 
     }
@@ -98,12 +102,30 @@ public class C6_Lambdada_ForLoop_Aralik_Kontrolu {
         IntStream.iterate(1, t -> t + 2).limit(10).
                 forEach(Methods::yazInteger);
     }
+
     //S10: 21 den baslayan 7 nin katlarinin tek olanlari ilk 10 teriminin yaziralim
+    public static void yedınınKatlar(int a) {
+
+        IntStream.iterate(21, t -> t + 7).
+                filter(Methods::tekMi).limit(10).
+                forEach(Methods::yazInteger);
+    }
 
 
     //S11: 21 den baslayan 7 nin katlarinin ilk 20 teriminin toplayalim
+    public static int yedınınKatlarTop(int a) {
+
+        return IntStream.iterate(21, t -> t + 7).
+                limit(20).sum();
+
+
+    }
 
 }
+
+
+
+
 //iterate bize sayilari istedigimiz sekilde yineletmeyi saglar yani buradaki ornekte 7ser7ser artmayi saglar
 //iterate icin bir baslangic degeri girilmeli ve artisin nasil olacagi belirtilmeli nerede biteceginide
 // limit() ile belirliyoruz
